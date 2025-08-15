@@ -2,23 +2,9 @@
 PSEUDOCODE
 - convert to comments and delete later
 - 3 main sections: 
-    - js logic functions
-    - html calculator w/ display functions
-    - js logic implementation into html calculator
-
-
-***JS Logic Functions (steps 1-3)***
-
-step 1: basic math operations
-step 2: operation variables and function
-step 3: operator function
-
-***HTML Calculator w/ Display Functions (steps 4-5)***
-step 4: basic html calculator using dom
-step 5: display functions
-
-***JS Logic Implementation into HTML Calculator (step 6)****
-step 6: integrate js and html so the calculator works (user inputs an operation, calculator outputs the correct response)
+    - js logic functions (steps 1-3)
+    - html calculator w/ display functions (steps 4-5)
+    - js logic implementation into html calculator (step 6)
 */
 
 // JS Logic Functions (steps 1-3)
@@ -54,17 +40,25 @@ ENDFUNC
 
 // step 2
 // INIT let variables to store an operand, an operator, and an operand
+// INIT let variable to store the result of the operation
+// SET let variables to null for now
 
 // step 3
 /* Function perform an operation
 Pass In: two operands, one operator
-Action: 
+Action:
+    IF the operand and operator variables are null (aka user has pressed = to call this function w/o complete input) OR one of them is null THEN
+        SHOW an alert message telling the user to input a proper operation
+    IF the second operand variable equals zero THEN
+        SHOW an alert message telling the user dividing by 0 is not allowed
     CASE operator value OF
     +: call addition function and pass operands
     -: call subtraction function and pass operands
     *: call multiplication function and pass operands
     /: call addition function and pass operands
     ENDCASE
+    DETERMINE the rounded version of the result to avoid overflowing the calculator display
+    UPDATE the operation result variable (this acts like a form of 'memory' for chained operations)
 Pass Out: the result of the operation
 ENDFUNC
 */
@@ -86,17 +80,29 @@ ENDFUNC
 
 /* Function store clicked values
 Pass In: value of the clicked button (operator or number)
-Action: 
+Action:
     IF the clicked value is not the = sign
-        SET a variable (initialized earlier outside the function as an empty array) to store the value for later use
+        CASE operator data type OF
+            number: store in first operand variable or second operand variable (check whether variables are null or not to determine which ones should store what number)
+            operator: store in operator variable
+        ENDCASE
 Pass Out: n/a
 ENDFUNC
+*/
+
+/* Function clear values
+Pass In: n/a
+Action: SET the variables which store the user input (operands and operator) back to null
+Pass Out: n/a
 */
 
 // JS Logic Implementation into HTML Calculator (step 6)
 // step 6: integrate js and html so the calculator works (user inputs an operation, calculator outputs the correct response)
 // CALL the display numbers function to show which operands the user clicks
 // CALL the store values function to store which operands and operator the user clicks
-// CALL the operator function (pass it the result of the store values function to calculate the right result when the user clicks on the equal sign
+// CALL the operator function (pass it the result of the store values function to calculate the right result when the user clicks on the equal sign)
 // CALL the display numbers function again to update the display with the result of the operator function
-// CLEAR the variable array which stores the user input (operands and operator)
+// IF operand variables are not null AND any non-equal sign operator button is clicked (aka a chained operation) THEN
+    // SET the first operand variable to the result of the operation
+    // CALL the operator function again (pass it the result of the store values function)
+// CALL the clear function when the user clicks the clear button or if the user clicks a digit button
