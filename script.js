@@ -59,12 +59,16 @@ console.log(divide(5,2));
 // INIT let variables to store an operand, an operator, and an operand
 // INIT let variable to store the result of the operation
 // SET let variables to null for now
+let operand1 = null;
+let operand2 = null;
+let operator = null;
+let operationResult = null;
 
 // step 3
 /* Function perform an operation
 Pass In: two operands, one operator
 Action:
-    IF the operand and operator variables are null (aka user has pressed = to call this function w/o complete input) OR one of them is null THEN
+    IF one of the operand and operator variables are null (aka user has pressed = to call this function w/o complete input) THEN
         SHOW an alert message telling the user to input a proper operation
     IF the second operand variable equals zero THEN
         SHOW an alert message telling the user dividing by 0 is not allowed
@@ -74,11 +78,34 @@ Action:
     *: call multiplication function and pass operands
     /: call addition function and pass operands
     ENDCASE
-    DETERMINE the rounded version of the result to avoid overflowing the calculator display
     UPDATE the operation result variable (this acts like a form of 'memory' for chained operations)
+    DETERMINE the rounded version of the result to avoid overflowing the calculator display
 Pass Out: the result of the operation
 ENDFUNC
 */
+function operate(num1, num2, operator) {
+    if (num1 === null || num2 === null || operator === null) {
+        alert("Please input a proper operation: a number, an operator sign, and a number");
+    } else if (num2 === 0 && operator === "/") {
+        alert("Oho, you're approaching me? Then come as close as you'd like! Dividing by 0 will never happen!");
+    } else {
+        switch (operator) {
+            case "+":
+                operationResult = add(num1, num2);
+                break;
+            case "-":
+                operationResult = subtract(num1, num2);
+                break;
+            case "*":
+                operationResult = multiply(num1, num2);
+                break;
+            case "/":
+                operationResult = divide(num1, num2);
+                break;
+        }
+        return Number.isInteger(operationResult) ? operationResult : Number.parseFloat(operationResult.toFixed(2));
+    }
+}
 
 // HTML Calculator w/ Display Functions (steps 4-5)
 // step 4: basic html calculator using dom
