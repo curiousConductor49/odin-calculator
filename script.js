@@ -16,6 +16,9 @@ Action: CALCULATE the sum of the numbers
 Pass Out: sum of the numbers
 ENDFUNC
 */
+function add(a, b) {
+    return a + b;
+}
 
 /* Function subtract two numbers
 Pass In: two numbers
@@ -23,6 +26,9 @@ Action: CALCULATE the difference of the numbers
 Pass Out: difference of the numbers
 ENDFUNC
 */
+function subtract(a, b) {
+    return a - b;
+}
 
 /* Function multiply two numbers
 Pass In: two numbers
@@ -30,6 +36,9 @@ Action: CALCULATE the product of the numbers
 Pass Out: product of the numbers
 ENDFUNC
 */
+function multiply(a, b) {
+    return a * b;
+}
 
 /* Function divide two numbers
 Pass In: two numbers
@@ -37,6 +46,14 @@ Action: CALCULATE the quotient of the numbers
 Pass Out: quotient of the numbers
 ENDFUNC
 */
+function divide(a, b) {
+    return a / b;
+}
+
+console.log(add(5,2));
+console.log(subtract(5,2));
+console.log(multiply(5,2));
+console.log(divide(5,2));
 
 // step 2
 // INIT let variables to store an operand, an operator, and an operand
