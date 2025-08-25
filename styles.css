@@ -9,7 +9,7 @@
 }
 
 .display {
-    border-bottom: 4px solid orange;
+    border-bottom: 4px solid orangered;
     height: 15vh;
     font-size: 4rem;
 }
@@ -29,7 +29,7 @@
     width: calc(100% / 5);
     min-height: 60px;
     flex-grow: 1;
-    border: 1px solid green;
+    border: 1px solid pink;
     cursor: pointer;
 }
 
