@@ -1,6 +1,7 @@
 .calculator-container {
+    border: 5px solid pink;
+    border-radius: 5px;
     margin: 50px auto;
-    border: 2px solid pink;
     width: 30vw;
     height: 70vh;
     display: flex;
@@ -8,58 +9,40 @@
 }
 
 .display {
-    width: 100%;
+    border-bottom: 4px solid orange;
     height: 15vh;
     font-size: 4rem;
-    text-align: right;
-    /* border: 4px solid black; */
 }
 
 .inner-container {
-    display: flex;
-    width: 100%;
-    height: 40vh;
     /* border: 1px solid blue; */
-}
-
-.number-pad {
-    /* border: 2px solid orange; */
-    width: 22.5vw;
     display: flex;
-    align-content: stretch;
-    align-items: stretch;
     flex-wrap: wrap;
-}
-
-.number-pad > * {
     flex-grow: 1;
-    width: 60px;
-    min-height: 65px;
 }
 
-.number-key {
-    flex-grow: 1;
-    min-width: 75px;
-    min-height: 65px;
-    border: 1px solid purple;
-}
-
-.operator-pad {
-    /* border: 3px solid green; */
-    width: 7.5vw;
+.inner-container > div {
+    font-size: 2.2rem;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 5);
+    min-height: 60px;
+    flex-grow: 1;
+    border: 1px solid green;
+    cursor: pointer;
 }
 
-.operator-key {
-    flex-grow: 1;
-    min-width: 50px;
-    min-height: 50px;
-    border: 1px solid orange;
+.btn-container {
+    display: flex;
+    border: none;
 }
 
 .clear-btn {
-    width: 100px;
-    height: 50px;
+    border-radius: 0px;
+    border: none;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 100%;
 }
 
