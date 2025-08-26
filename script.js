@@ -112,6 +112,10 @@ function operate(num1, num2, operator) {
 // Create a div container and its children with classes to mimic a calculator's layout
 // Children should include a display, number buttons (0-9), operator buttons (+, -, x, ÷), an equal sign button, and a clear button that wipes the display
 // INIT variables to store their respective DOM nodes
+const numberKeys = document.querySelectorAll(".number-key");
+const operatorKeys = document.querySelectorAll(".operator-key");
+const clearBtn = document.querySelector(".clear-btn");
+const displayPanel = document.querySelector(".display");
 
 // step 5: display functions
 /* Function display clicked numbers
