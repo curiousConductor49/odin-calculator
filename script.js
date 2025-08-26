@@ -172,6 +172,14 @@ Pass In: n/a
 Action: SET the variables which store the user input (operands and operator) back to null
 Pass Out: n/a
 */
+function clearValues() {
+    operand1 = null;
+    operand2 = null;
+    operator = null;
+    displayPanel.textContent = "";
+}
+
+clearBtn.addEventListener("click", () => {clearValues()});
 
 // JS Logic Implementation into HTML Calculator (step 6)
 // step 6: integrate js and html so the calculator works (user inputs an operation, calculator outputs the correct response)
