@@ -126,6 +126,16 @@ Pass Out: n/a
 ENDFUNC
 */
 
+function displayNum(numberKey) {
+    displayPanel.textContent += numberKey.textContent;
+}
+
+for (const key of numberKeys) {
+    // console.log(key.value);
+    key.addEventListener("click", () => {displayNum(key)});
+}
+
+
 /* Function store clicked values
 Pass In: value of the clicked button (operator or number)
 Action:
