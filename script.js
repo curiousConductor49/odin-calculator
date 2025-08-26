@@ -114,11 +114,12 @@ function operate(num1, num2, operator) {
 // INIT variables to store their respective DOM nodes
 const numberKeys = document.querySelectorAll(".number-key");
 const operatorKeys = document.querySelectorAll(".operator-key");
+const calcKeys = document.querySelectorAll(".calc-key");
 const clearBtn = document.querySelector(".clear-btn");
 const displayPanel = document.querySelector(".display");
 
 // step 5: display functions
-/* Function display clicked numbers
+/* Function display clicked numbers and store clicked values
 Pass In: value of the clicked number button
 Action:
     SHOW the value in the display element of the calculator
@@ -126,18 +127,8 @@ Pass Out: n/a
 ENDFUNC
 */
 
-function displayNum(numberKey) {
-    displayPanel.textContent += numberKey.textContent;
-}
-
-for (const key of numberKeys) {
-    // console.log(key.value);
-    key.addEventListener("click", () => {displayNum(key)});
-}
-
-
 /* Function store clicked values
-Pass In: value of the clicked button (operator or number)
+Pass In: value of the clicked number button
 Action:
     IF the clicked value is not the = sign
         CASE operator data type OF
@@ -147,6 +138,34 @@ Action:
 Pass Out: n/a
 ENDFUNC
 */
+
+function displayNum(numberKey) {
+    displayPanel.textContent += numberKey.textContent;
+}
+
+function storeClickedValue(calcKey) {
+    if (calcKey.classList.contains("number-key")) {
+        if (operand1 === null) {
+            operand1 = calcKey.textContent;
+        } else {
+            operand2 = calcKey.textContent;
+        }
+    } else if (calcKey.classList.contains("operator-key")) {
+        operator = calcKey.textContent;
+    }
+}
+
+for (const key of calcKeys) {
+    if (key.classList.contains("number-key")) {
+        key.addEventListener("click", () => {displayNum(key)});
+    }
+    key.addEventListener("click", () => {
+        storeClickedValue(key);
+        // console.log(operand1);
+        // console.log(operand2);
+        // console.log(operator);
+    });
+}
 
 /* Function clear values
 Pass In: n/a
