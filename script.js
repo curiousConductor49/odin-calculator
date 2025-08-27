@@ -16,8 +16,8 @@ const equalSign = document.querySelector(".equal-sign");
 const clearBtn = document.querySelector(".clear-btn");
 const displayPanel = document.querySelector(".display");
 
-let operand1 = null;
-let operand2 = null;
+let operand1 = [];
+let operand2 = [];
 let operator = null;
 let operationResult = null;
 
@@ -46,13 +46,20 @@ function divide(a, b) {
 
 
 function operate(num1, num2, operator) {
-    if (num1 === null || num2 === null || operator === null) {
+    if (num1.length === 0 || num2.length === 0 || operator === null) {
         alert("Please input a proper operation: a number, an operator sign, and a number");
-    } else if (num2 === 0 && operator === "/") {
+    } else if (num2[0] === 0 && operator === "÷") {
         alert("Oho, you're approaching me? Then come as close as you'd like! Dividing by 0 will never happen!");
     } else {
-        digit1 = parseInt(num1);
-        digit2 = parseInt(num2);
+        // console.log(num1);
+        // console.log(num2);
+        // console.log(operator);
+
+        digit1 = parseInt(num1.join(""));
+        digit2 = parseInt(num2.join(""));
+
+        // console.log(digit1);
+        // console.log(digit2);
 
         switch (operator) {
             case "+":
@@ -75,10 +82,10 @@ function operate(num1, num2, operator) {
 
 function storeClickedValue(key) {
     if (key.classList.contains("number-key")) {
-        if (operand1 === null) {
-            operand1 = key.textContent;
-        } else {
-            operand2 = key.textContent;
+        if (operator === null) {
+            operand1.push(key.textContent);
+        } else if (operator !== null) {
+            operand2.push(key.textContent);
         }
     } else if (key.classList.contains("operator-key")) {
         operator = key.textContent;
@@ -86,8 +93,8 @@ function storeClickedValue(key) {
 }
 
 function clearValues() {
-    operand1 = null;
-    operand2 = null;
+    operand1 = [];
+    operand2 = [];
     operator = null;
     displayPanel.textContent = "";
 }
