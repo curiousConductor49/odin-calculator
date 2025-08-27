@@ -84,8 +84,10 @@ function storeClickedValue(key) {
     if (key.classList.contains("number-key")) {
         if (operator === null) {
             operand1.push(key.textContent);
+            displayPanel.textContent = operand1.join("");
         } else if (operator !== null) {
             operand2.push(key.textContent);
+            displayPanel.textContent = operand2.join("");
         }
     } else if (key.classList.contains("operator-key")) {
         operator = key.textContent;
@@ -100,9 +102,6 @@ function clearValues() {
 }
 
 for (const key of calcKeys) {
-    if (key.classList.contains("number-key")) {
-        key.addEventListener("click", () => {displayPanel.textContent = key.textContent});
-    }
     key.addEventListener("click", () => {
         storeClickedValue(key);
         // console.log(operand1);
@@ -113,8 +112,7 @@ for (const key of calcKeys) {
 
 clearBtn.addEventListener("click", () => {clearValues()});
 equalSign.addEventListener("click", () => {
-    const final = operate(operand1, operand2, operator);
-    displayPanel.textContent = final;
+    displayPanel.textContent = operate(operand1, operand2, operator);
     // displayNum(final);
     // console.log(final);
 })
