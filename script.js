@@ -101,7 +101,7 @@ function clearValues() {
 
 for (const key of calcKeys) {
     if (key.classList.contains("number-key")) {
-        key.addEventListener("click", () => {displayPanel.textContent += key.textContent});
+        key.addEventListener("click", () => {displayPanel.textContent = key.textContent});
     }
     key.addEventListener("click", () => {
         storeClickedValue(key);
