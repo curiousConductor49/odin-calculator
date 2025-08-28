@@ -1,12 +1,3 @@
-/* 
-PSEUDOCODE
-- convert to comments and delete later
-- 3 main sections: 
-    - js logic functions (steps 1-3)
-    - html calculator w/ display functions (steps 4-5)
-    - js logic implementation into html calculator (step 6)
-*/
-
 // Declare variables
 
 const numberKeys = document.querySelectorAll(".number-key");
@@ -39,12 +30,6 @@ function divide(a, b) {
     return a / b;
 }
 
-// console.log(add(5,2));
-// console.log(subtract(5,2));
-// console.log(multiply(5,2));
-// console.log(divide(5,2));
-
-
 function operate(num1, num2, operator) {
     if (num1.length === 0 || num2.length === 0 || operator === null) {
         alert("Please input a proper operation: a number, an operator sign, and a number");
@@ -57,9 +42,6 @@ function operate(num1, num2, operator) {
 
         digit1 = parseInt(num1.join(""));
         digit2 = parseInt(num2.join(""));
-
-        // console.log(digit1);
-        // console.log(digit2);
 
         switch (operator) {
             case "+":
@@ -81,16 +63,23 @@ function operate(num1, num2, operator) {
 }
 
 function storeClickedValue(key) {
-    if (key.classList.contains("number-key")) {
-        if (operator === null) {
-            operand1.push(key.textContent);
-            displayPanel.textContent = operand1.join("");
-        } else if (operator !== null) {
-            operand2.push(key.textContent);
-            displayPanel.textContent = operand2.join("");
-        }
-    } else if (key.classList.contains("operator-key")) {
+    if (operand1.length !== 0 && operand2.length !== 0 && key.classList.contains("operator-key")) {
+        operand1 = [];
+        operand2 = [];
+        operationResult.toString().split("").map((el) => operand1.push(el));
         operator = key.textContent;
+    } else {
+        if (key.classList.contains("number-key")) {
+            if (operator === null) {
+                operand1.push(key.textContent);
+                displayPanel.textContent = operand1.join("");
+            } else if (operator !== null) {
+                operand2.push(key.textContent);
+                displayPanel.textContent = operand2.join("");
+            }
+        } else if (key.classList.contains("operator-key")) {
+            operator = key.textContent;
+        }
     }
 }
 
@@ -104,26 +93,10 @@ function clearValues() {
 for (const key of calcKeys) {
     key.addEventListener("click", () => {
         storeClickedValue(key);
-        // console.log(operand1);
-        // console.log(operand2);
-        // console.log(operator);
     });
 }
 
 clearBtn.addEventListener("click", () => {clearValues()});
 equalSign.addEventListener("click", () => {
     displayPanel.textContent = operate(operand1, operand2, operator);
-    // displayNum(final);
-    // console.log(final);
 })
-
-// JS Logic Implementation into HTML Calculator (step 6)
-// step 6: integrate js and html so the calculator works (user inputs an operation, calculator outputs the correct response)
-// CALL the display numbers function to show which operands the user clicks
-// CALL the store values function to store which operands and operator the user clicks
-// CALL the operator function (pass it the result of the store values function to calculate the right result when the user clicks on the equal sign)
-// CALL the display numbers function again to update the display with the result of the operator function
-// IF operand variables are not null AND any non-equal sign operator button is clicked (aka a chained operation) THEN
-    // SET the first operand variable to the result of the operation
-    // CALL the operator function again (pass it the result of the store values function)
-// CALL the clear function when the user clicks the clear button or if the user clicks a digit button
