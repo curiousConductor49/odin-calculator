@@ -12,14 +12,13 @@
     border-bottom: 4px solid orangered;
     height: 15vh;
     font-size: 4rem;
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    padding: 10px;
+    display: block;
+    text-align: end;
+    padding: 80px 10px 0px 0px;
+    overflow: scroll;
 }
 
 .inner-container {
-    /* border: 1px solid blue; */
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
