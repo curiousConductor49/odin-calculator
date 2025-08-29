@@ -23,7 +23,7 @@ body {
 
 .calculator-container {
     color: #fff;
-    border: 5px solid #9C9797;
+    border: 2px solid #9C9797;
     border-radius: 5px;
     margin: 50px auto;
     width: 30vw;
@@ -33,7 +33,7 @@ body {
 }
 
 .display {
-    border-bottom: 4px solid orangered;
+    border-bottom: 2px solid orangered;
     height: 15vh;
     font-size: 4rem;
     display: block;
@@ -56,7 +56,7 @@ body {
     width: calc(100% / 5);
     min-height: 60px;
     flex-grow: 1;
-    border: 2px solid #fff;
+    border: 0.5px solid #fff;
 }
 
 .inner-container > div:not(.blank-key) {
