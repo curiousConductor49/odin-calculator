@@ -3,6 +3,24 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.headings-container p {
+    text-align: center;
+    color: #fff;
+    font-size: 2.2rem;
+}
+
+.highlight-one {
+    color:#3E62B3;
+}
+
+.highlight-two {
+    color:#4E854E;
+}
+
+.highlight-three {
+    color:#D6922D;
+}
+
 .calculator-container {
     color: #fff;
     border: 5px solid #9C9797;
