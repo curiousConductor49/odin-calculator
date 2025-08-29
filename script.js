@@ -1,5 +1,4 @@
 // declare variables to store DOM nodes
-
 const numberKeys = document.querySelectorAll(".number-key");
 const operatorKeys = document.querySelectorAll(".operator-key");
 const calcKeys = document.querySelectorAll(".calc-key");
@@ -14,7 +13,6 @@ let operator = null;
 let operationResult = null;
 
 // create functions for basic math operations
-
 function add(a, b) {
     return a + b;
 }
@@ -120,9 +118,4 @@ clearBtn.addEventListener("click", () => {clearValues()});
 // call operation function and display result in DOM
 equalSign.addEventListener("click", () => {
     displayPanel.textContent = operate(operand1, operand2, operator);
-
-    console.log(operand1);
-    console.log(operand2);
-    console.log(operator);
-    console.log(operationResult);
 })
